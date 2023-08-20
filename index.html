@@ -16,18 +16,85 @@
             text-align: center;
             border-bottom: 1px solid #ddd;
         }
+
+        button {
+            color: white;
+            background-color: darkcyan;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            width: 200px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        button.result-btn {
+            background-color: crimson;
+        }
+
+        button.save-btn {
+            background-color: rgba(12, 192, 21, 0.4);
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="radio"] {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+            margin: 0;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .split-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .left {
+            width: 60%;
+            background-color: #f7f7f7;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .right {
+            width: 40%;
+            background-color: #fff;
+            border-left: 1px solid #ccc;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .table-container {
+            max-height: 600px; /* Adjust the max height as needed */
+            overflow: auto;
+        }
     </style>
 </head>
 <script>
     let newObj = [];
 
-    function range(radio_name){
+    function range(radio_name) {
         const el = document.getElementsByName(radio_name)
         for (let i = 0; i < el.length; i++) {
             if (el[i].checked)
                 return el[i].value
         }
     }
+
     function add() {
 
         const favorite_range = parseInt(range('favorite-range'))
@@ -39,30 +106,39 @@
         const apply = document.getElementsByName('apply')[0].value * apply_range;
         const market = document.getElementsByName('market')[0].value * market_range;
 
+        const sp = parseInt(range('super'))
         const university = document.getElementsByName('university')[0].value;
-        const favorite_uni = document.getElementsByName('favorite-uni')[0].value * 60;
+        const favorite_uni = document.getElementsByName('favorite-uni')[0].value * (50 + sp * 250);
         const accepted = parseInt(range('chance'))
 
         let score = favorite + apply + market + favorite_uni
 
         newObj.push({
-            name : major + " - " + university,
-            score : score,
-            accepted : accepted
+            name: major + " - " + university,
+            score: score,
+            accepted: accepted
 
         });
 
         document.getElementsByName('major')[0].value = ""
         document.getElementsByName('university')[0].value = ""
-        document.getElementsByName('favorite')[0].value = ""
-        document.getElementsByName('apply')[0].value = ""
-        document.getElementsByName('market')[0].value = ""
-        document.getElementsByName('favorite-uni')[0].value = ""
+        document.getElementsByName('favorite')[0].value = 1
+        document.getElementsByName('apply')[0].value = 1
+        document.getElementsByName('market')[0].value = 1
+        document.getElementsByName('favorite-uni')[0].value = 1
+
+
+        var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];
+        var newRow = table.insertRow(table.rows.length);
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        cell1.innerHTML = major;
+        cell2.innerHTML = university;
 
 
     }
 
-    function result(){
+    function result() {
         newObj.sort((a, b) => b.score - a.score);
 
         const tableBody = document.querySelector('#objectTable tbody');
@@ -84,7 +160,7 @@
 
             if (object.accepted) {
                 acceptCell.style.backgroundColor = 'green';
-            } else{
+            } else {
                 acceptCell.style.backgroundColor = 'red';
             }
 
@@ -93,82 +169,114 @@
         }
         newObj = [];
     }
+
+    function save() {
+        document.getElementsByClassName("split-container")[0].style = "display : none"
+        document.getElementsByClassName("ctrl")[0].style = "visibility : visible"
+    }
 </script>
 
 <body style="direction: rtl">
-<label>رشتتو وارد کن : </label>
-<input type="text" name="major" placeholder="رشتتو وارد کن">
-<br>
-<br>
-<ul>
-    <li>
-        <label>میزان علاقه : (1 - 10)</label>
-        <input name="favorite" type="number" min="0" max="10" value="1">  | اهمیت =>
-        کم : <input value="10" name="favorite-range" type="radio" checked>
-        متوسط : <input value="50" name="favorite-range" type="radio">
-        زیاد : <input value="100" name="favorite-range" type="radio">
-
-    </li>
-    <br>
-    <li>
-        <label>بازار کار ایران : (1 - 10)</label>
-        <input name="market" type="number" min="0" max="10" value="1">  | اهمیت =>
-        کم : <input value="10" name="market-range" type="radio" checked>
-        متوسط : <input value="50" name="market-range" type="radio">
-        زیاد : <input value="100" name="market-range" type="radio">
-    </li>
-    <br>
-    <li>
-        <label>مهاجرت : (1 - 10)</label>
-        <input name="apply" type="number" min="0" max="10" value="1"> | اهمیت =>
-        کم : <input value="10" name="apply-range" type="radio" checked>
-        متوسط : <input value="50" name="apply-range" type="radio">
-        زیاد : <input value="100" name="apply-range" type="radio">
-    </li>
-    <br>
-</ul>
-<p>-------------------------------------------------------------------------------</p>
-<label>دانشگاه مورد نظر</label>
-<input type="text" name="university" placeholder="دانشگاه را وارد کن">
-<ul>
-    <li>
-        <label>میزان علاقه : (1 - 10)</label>
-        <input name="favorite-uni" type="number" min="0" max="10" value="1">
-    </li>
-    <br>
-    <li>
-        <label>با رتبه تو پارسال قبول شدند ؟</label>
+<div class="split-container">
+    <div class="left">
+        <label>رشتتو وارد کن : </label>
+        <input type="text" name="major" placeholder="رشتتو وارد کن">
+        <br>
         <br>
         <ul>
-            <br>
             <li>
-                آره : <input value="1" name="chance" type="radio" checked>
+                <label>میزان علاقه : (1 - 10)</label>
+                <input name="favorite" type="number" min="0" max="10" value="1"> | اهمیت =>
+                کم : <input value="10" name="favorite-range" type="radio" checked>
+                متوسط : <input value="50" name="favorite-range" type="radio">
+                زیاد : <input value="100" name="favorite-range" type="radio">
+
             </li>
             <br>
             <li>
-                خیر : <input value="0" name="chance" type="radio">
+                <label>بازار کار ایران : (1 - 10)</label>
+                <input name="market" type="number" min="0" max="10" value="1"> | اهمیت =>
+                کم : <input value="10" name="market-range" type="radio" checked>
+                متوسط : <input value="50" name="market-range" type="radio">
+                زیاد : <input value="100" name="market-range" type="radio">
+            </li>
+            <br>
+            <li>
+                <label>مهاجرت : (1 - 10)</label>
+                <input name="apply" type="number" min="0" max="10" value="1"> | اهمیت =>
+                کم : <input value="10" name="apply-range" type="radio" checked>
+                متوسط : <input value="50" name="apply-range" type="radio">
+                زیاد : <input value="100" name="apply-range" type="radio">
+            </li>
+            <br>
+        </ul>
+        <hr>
+        <label>دانشگاه مورد نظر</label>
+        <input type="text" name="university" placeholder="دانشگاه را وارد کن">
+        <ul>
+            <li>
+                <label>میزان علاقه : (1 - 10)</label>
+                <input name="favorite-uni" type="number" min="0" max="10" value="1">
+            </li>
+            <br>
+            <li>
+                <label>آیا این دانشگاه برای شما از امتیاز ویژه ای دارد؟</label>
+                <br>
+                <ul>
+                    <br>
+                    <li>
+                        بله : <input value="1" name="super" type="radio">
+                    </li>
+                    <br>
+                    <li>
+                        خیر : <input value="0" name="super" type="radio" checked>
+                    </li>
+                </ul>
+            </li>
+            <br>
+            <li>
+                <label>با رتبه تو پارسال قبول شدند ؟</label>
+                <br>
+                <ul>
+                    <br>
+                    <li>
+                        بله : <input value="1" name="chance" type="radio" checked>
+                    </li>
+                    <br>
+                    <li>
+                        خیر : <input value="0" name="chance" type="radio">
+                    </li>
+                </ul>
             </li>
         </ul>
-    </li>
-</ul>
-<button STYLE="color: white; background-color: darkcyan;
-border-radius: 10px; padding: 10px; width: 200px;margin-right: 100px"
-        onclick="add()"
->
-    تایید
-</button>
-<p>-------------------------------------------------------------------------------</p>
-<button STYLE="color: white; background-color: crimson;
- border-radius: 10px; padding: 10px; width: 200px;margin-right: 100px"
-        onclick="result()"
->
-    مشاهده نتیجه
-</button>
+        <button class="add-btn" onclick="add()"> تایید</button>
+        <hr>
+        <button class="result-btn" onclick="result()"> مشاهده نتیجه</button>
+        <button class="save-btn" onclick="save()"> ذخیره نتیجه</button>
+    </div>
+    <div class="right">
+        <h2>اضافه شده</h2>
+        <div class="table-container">
+            <table id="myTable">
+                <thead>
+                <tr>
+                    <th>رشته</th>
+                    <th>دانشگاه</th>
+                    <!-- Add more headers as needed -->
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 <br>
 <br>
 
 <table id="objectTable">
+    <h4 style="text-align: center; visibility: hidden" class="ctrl">با فشار دادن دکمه ctrl + p به عنوان pdf ذخیره کنید</h4>
     <thead>
     <tr>
         <th>رشته</th>
