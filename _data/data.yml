@@ -1,0 +1,35 @@
+#
+# Be aware that even a small syntax error here can lead to failures in output. 
+#
+
+sidebar:
+    # Site Settings
+    title: My Resume
+    url: 'https://shashankpr.github.io'
+    about: False # set to False or comment line if you want to remove the "How to use?" in the sidebar
+    
+    # Profile information
+    name: Shashank Rao
+    tagline: Machine Learning Engineer
+    pic: profile.png  #place a 100x100 picture inside /assets/images/ folder and provide the name of the file below
+    
+    #sidebar links
+    email: shashankpr16@gmail.com
+    phone: +31 6 49184292
+    website: shashankpr.github.io #do not add http://
+    linkedin: shashankprao
+    github: shashankpr
+    twitter: '@shannky16'
+    
+
+        
+
+
+
+
+career-profile: 
+    title: Career Profile
+    text: "Machine Learning Engineer with +2 years of experience in a varied fields of application like Multimedia, NLP, Healthcare and IoT. Calm and research-oriented, I am proficient at building, deploying and optimizing ML & Deep Learning models and handling large datasets. Have a Master's Degree in CS with Data Science & Technology Specialization."
+
+footer: 
+    text: 'Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank" rel="nofollow">Xiaoying Riley</a> for developers'
