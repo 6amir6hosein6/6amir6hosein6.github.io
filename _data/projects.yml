@@ -1,17 +1,17 @@
-title: Projects
-projects:
-  - project:
-    title: HeyDobby
-    link: "https://github.com/shashankpr/HeyDobby"
-    tagline: "An assistant-cum-chatbot that I developed for powering my home IoT hub, Smart Mirror and for providing real-time speech-to-text transcription. The ultimate aim is to make it aware of the surroundings and recognize the speaker, thus helping people with hearing disability to understand and communicate in a group.
-    Technology stack: Python, TensorFlow, RPi, Flask, Wit.ai"
-  - project:
-    title: Credit Fraud Detection
-    link: "#"
-    tagline: "Anomaly Detection on Adyen's credit dataset using PCA and ARIMA models.
-    Technology stack: Python, scikit-learn, statsmodel."
-  - project:
-    title: CareFinder
-    link: "#"
-    tagline: "A web search engine to search for hospitals and clinics by the type of specialist care they offer.
-    Technology stack: Python, BeautifulSoup, Neo4J"
+# Projects
+# uncomment the urls if you wish to display them, and add your own URL
+
+# jazznotes.io
+- project: Microsoft Percept 
+  role: Online ordering @NCRGlobalHack - Java, Python
+  duration: 2021 &mdash; Present
+  # url: "#"
+  description: • Used Microsoft Percept and NCR Online order API to make a self-ordering driv-thru system in a team of 5. Top 12 finalist.
+
+# Springfield Community Outreach Group
+- project: CSMusic 
+  role: Medicine solution for elders @HackATL - Java, Python 
+  duration: 2019 &mdash; Present
+  # url: "#"
+  description: AR music creation app that introduces computing concepts of Computer Science to Elementary School Students devoid of internet. Designed to be accessible offline and students can learn concepts of for loop, if condition by the number of repetitions and the nodes in music creation. 
+

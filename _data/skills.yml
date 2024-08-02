@@ -1,23 +1,12 @@
-title: Skills &amp; Proficiency
-skills:
-    - skill:
-      name: Python
-      level: 90%
-    - skill:
-      name: Keras, TensorFlow
-      level: 85%
-    - skill:
-      name: Machine Learning
-      level: 85%
-    - skill:
-      name: Deep Learning
-      level: 85%
-    - skill:
-      name: NumPy, SciPy, Pandas
-      level: 90%
-    - skill:
-      name: MATLAB
-      level: 70%
-    - skill:
-      name: R
-      level: 60%
+# Skills
+# Organizational leadership
+- skill: Languages
+  description: Java, RxJava, Kotlin, Python, JavaScript, Swift
+
+# Communications strategy
+- skill: Technologies
+  description: Android, Espresso, Mockito, OkHttp + Retrofit, IoT, Firebase (Authentication, Firestore, Storage, Cloud Messaging, Cloud Functions, ML Kit), Git, JIRA, TeamCity
+
+# Digital content development and creation
+- skill: Concepts
+  description: Object-orientated programming, mobile development, MVC, MVVM, Agile, Scrum, QA

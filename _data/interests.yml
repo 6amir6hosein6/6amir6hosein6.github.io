@@ -1,12 +1,4 @@
-- interest:
-  item: Scuba diving
-  link:
-- interest:
-  item: Skydiving
-  link:
-- interest:
-  item: Music (Country & Acoustic)
-  link:
-- interest:
-  item: Reading books
-  link:
+# Interests
+- description: Languages
+- description: Swimming
+- description: Filmmaking 
