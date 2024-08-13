@@ -66,6 +66,9 @@
     width: 60%;
     margin-left: 10%;
   }
+  .header-content{
+    margin-top: 60px;
+  }
 }
 
 @media (max-width: 500px) {
@@ -74,6 +77,12 @@
   }
   .card-img {
     margin-left: 0;
+  }
+  #audioPlayer{
+    width: 100%;
+  }
+  .header-content{
+    margin-top: 120px;
   }
 }
 
