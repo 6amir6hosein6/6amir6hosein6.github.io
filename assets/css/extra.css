@@ -56,7 +56,27 @@
 }
 .education{
   margin: auto;
+  width: 40%;
 }
+@media (max-width: 1000px) {
+  .education {
+    width: 100%;
+  }
+  .card-img {
+    width: 60%;
+    margin-left: 10%;
+  }
+}
+
+@media (max-width: 400px) {
+  .education {
+    text-align: center;
+  }
+  .card-img {
+    margin-left: 0;
+  }
+}
+
 .card-img{
   margin-top: 8%;
 }
